@@ -103,6 +103,22 @@ struct EastMoneyMarketDataSourceTests {
         #expect(point.amount == 10010)
     }
 
+    @Test("removes the padding EastMoney puts inside three-character names")
+    func removesNamePadding() async throws {
+        let source = EastMoneyMarketDataSource(
+            client: FixtureHTTPClient(data: payload(
+                #"{"rc":0,"data":{"name":"五 粮 液","preClose":10,"trends":["2026-09-01 09:30,9.95,9.95,9.95,9.95,100,995","2026-09-01 09:31,9.96,10.01,10.03,9.94,1000,10010"]}}"#
+            ))
+        )
+
+        let series = try await source.fetchMinuteSeries(
+            for: sz("000858"),
+            tradingDay: isoDate("2026-09-01T00:00:00+08:00")
+        )
+
+        #expect(series.instrument.name == "五粮液")
+    }
+
     @Test("normalizes EastMoney close markers into minute-bar starts and skips the opening snapshot")
     func normalizesLiveCloseMarkers() async throws {
         let source = EastMoneyMarketDataSource(

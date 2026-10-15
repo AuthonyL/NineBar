@@ -339,10 +339,12 @@ public struct EastMoneyMarketDataSource: MarketDataSource {
         }
     }
 
+    /// EastMoney pads three-character names to the width of four ("五 粮 液"). Security names
+    /// never contain real spaces, so all whitespace is removed.
     private func validName(_ value: String?) -> String? {
         guard let value else { return nil }
-        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmed.isEmpty ? nil : value
+        let compact = value.components(separatedBy: .whitespacesAndNewlines).joined()
+        return compact.isEmpty ? nil : compact
     }
 
     private func validPositive(_ value: Double?) -> Double? {
