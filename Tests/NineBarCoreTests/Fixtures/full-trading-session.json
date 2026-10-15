@@ -1,0 +1,16 @@
+{
+  "instrument": {"symbol":"600519","name":"样例股票","exchange":"sh","kind":"stock"},
+  "tradingDay": "2026-09-01",
+  "previousClose": 114.0,
+  "morning": {
+    "start": "09:47",
+    "closes": [113,112,111,110,109,108,107,106,105,104,103,102,101]
+  },
+  "afternoon": {
+    "start": "13:00",
+    "groupCount": 13,
+    "baseStart": 100.0,
+    "baseStep": 1.0,
+    "offsets": [0.8,-0.8,0.6,-0.6,0.0]
+  }
+}

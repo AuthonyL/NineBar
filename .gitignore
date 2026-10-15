@@ -1,0 +1,9 @@
+.build/
+dist/
+.swiftpm/
+*.xcodeproj/
+.DS_Store
+.vscode/
+.idea/
+.worktrees/
+.superpowers/
