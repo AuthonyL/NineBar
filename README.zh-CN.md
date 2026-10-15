@@ -4,6 +4,13 @@
 
 九转雷达是 macOS 菜单栏应用。它监控你填写的沪深 A 股和场内 ETF，按 1 分钟和 5 分钟 K 线计算九转序列，在第 8 根和第 9 根收盘确认时提醒。界面支持中文和英文。
 
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/panel-zh-dark.png">
+  <img src="docs/images/panel-zh-light.png" width="412" alt="九转雷达面板：20 只自选中处于第 6 至 9 根的序列">
+</picture>
+</p>
+
 > **不构成投资建议。** 九转雷达只在你的 Mac 上监控行情条件，不交易、不下单，也不读取账户、Cookie、交易记录或钥匙串。行情来自东方财富网页端点，它不是有服务承诺的正式开放 API，随时可能变更、限流或停止返回数据。
 
 ## 环境要求
@@ -51,6 +58,22 @@ cd NineBar
 - **已确认 9**：第 9 根收盘并通过完整性校验
 
 **参考价**：顶部序列取第 1–9 根的最高价，底部序列取第 1–9 根的最低价。它不是价格预测，也不是下单价格。
+
+下面是 2026-10-14 交易日的两段真实 1 分钟序列：一个已确认的顶部九转和一个已确认的底部九转。阴影部分是序列本身，K 线上标出第 1–9 根。
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/nine-top-zh-dark.png">
+  <img src="docs/images/nine-top-zh-light.png" width="592" alt="五粮液（000858）1 分钟已确认顶部九转，标出第 1 至 9 根">
+</picture>
+</p>
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/nine-bottom-zh-dark.png">
+  <img src="docs/images/nine-bottom-zh-light.png" width="592" alt="宁德时代（300750）1 分钟已确认底部九转，标出第 1 至 9 根">
+</picture>
+</p>
 
 连续竞价时段内，请求接收时间和最新分钟的结束时间都必须在 75 秒以内。过期、空、缺失或格式异常的数据不会推进计数，也不会产生确认。当天收盘后，应用从 10 秒报价轮询改为低频检查。
 

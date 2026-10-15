@@ -4,6 +4,13 @@
 
 NineBar is a macOS menu bar app that watches your Shanghai and Shenzhen A-shares and ETFs on 1-minute and 5-minute bars, counts nine-bar sequences (九转), and alerts you when a sequence reaches bar 8 and when bar 9 is confirmed. The interface is available in Chinese and English.
 
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/panel-en-dark.png">
+  <img src="docs/images/panel-en-light.png" width="412" alt="The NineBar panel listing the sequences at counts 6 to 9 in a 20-symbol watchlist">
+</picture>
+</p>
+
 > **Not investment advice.** NineBar only monitors a price condition on your own Mac. It does not trade, place orders, read accounts, cookies or keychain items. Market data comes from Eastmoney web endpoints, which are not an official API and may change, throttle or stop at any time.
 
 ## Requirements
@@ -51,6 +58,22 @@ An equal close resets the count, and a missing minute breaks the sequence, which
 - **confirmed 9**: the ninth bar has closed and passed the data checks
 
 The **reference price** is the highest high of bars 1–9 for a top sequence and the lowest low for a bottom sequence. It is not a forecast or an order price.
+
+Two real 1-minute sequences from the 2026-10-14 session: a confirmed top nine and a confirmed bottom nine. The shaded bars are the sequence, numbered 1–9.
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/nine-top-en-dark.png">
+  <img src="docs/images/nine-top-en-light.png" width="592" alt="A confirmed top nine on Wuliangye (000858), 1-minute bars, with bars 1 to 9 numbered">
+</picture>
+</p>
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/nine-bottom-en-dark.png">
+  <img src="docs/images/nine-bottom-en-light.png" width="592" alt="A confirmed bottom nine on CATL (300750), 1-minute bars, with bars 1 to 9 numbered">
+</picture>
+</p>
 
 During continuous trading, both the request time and the end of the latest minute must be within 75 seconds. Stale, empty, missing or malformed data never advances a count or produces a confirmation. Once the market is closed for the day, NineBar switches from 10-second polling to occasional checks.
 
